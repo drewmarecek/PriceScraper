@@ -37,21 +37,19 @@ export default function ContactPage() {
       <div className="mx-auto max-w-2xl px-6 py-12">
         <Link
           href="/"
-          className="mb-8 inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-wider text-muted-foreground transition-colors hover:text-primary"
+          className="mb-8 inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
         >
           <ArrowLeft className="h-4 w-4" />
-          Back
+          Back to home
         </Link>
 
         <div className="mb-10 flex items-center gap-3">
-          <div className="flex h-10 w-10 items-center justify-center rounded-lg border border-primary/30 bg-primary/10">
-            <Activity className="h-5 w-5 text-primary" />
+          <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary">
+            <Activity className="h-5 w-5 text-primary-foreground" />
           </div>
           <div>
-            <h1 className="text-2xl font-semibold tracking-tight text-foreground">Request access</h1>
-            <p className="font-mono text-[11px] uppercase tracking-wider text-muted-foreground">
-              PriceRadarAPI · intake
-            </p>
+            <h1 className="text-2xl font-bold text-foreground">Request access</h1>
+            <p className="text-sm text-muted-foreground">PriceRadarAPI — Early access</p>
           </div>
         </div>
 

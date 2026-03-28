@@ -1,4 +1,5 @@
 import { Bell, Clock, BarChart3, Globe, Building2, Database } from "lucide-react"
+import { Card, CardContent } from "@/components/ui/card"
 
 const features = [
   {
@@ -53,36 +54,30 @@ const features = [
 
 export function Features() {
   return (
-    <section id="features" className="mx-auto max-w-5xl px-6 py-20">
-      <div className="mb-12 text-center">
-        <p className="font-mono text-[11px] font-medium uppercase tracking-[0.3em] text-primary/80">
-          Signal feed
-        </p>
-        <h2 className="mt-3 text-2xl font-semibold tracking-tight text-foreground md:text-3xl">
-          Built for operators, not slide decks
-        </h2>
-        <p className="mx-auto mt-3 max-w-lg text-sm text-muted-foreground">
-          Every readout is designed like a desk terminal—dense, legible, and action-oriented.
+    <section id="features" className="mx-auto max-w-5xl px-6 py-16">
+      <div className="mb-10 text-center">
+        <h2 className="text-2xl font-bold text-foreground md:text-3xl">Built for operators, not slide decks</h2>
+        <p className="mx-auto mt-2 max-w-lg text-muted-foreground">
+          Dense readouts and clear labels—built for how facility owners actually work.
         </p>
       </div>
-      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
         {features.map((f) => (
-          <div
-            key={f.code}
-            className="group relative overflow-hidden rounded-lg border border-border bg-[oklch(0.08_0.02_250)] p-4 shadow-[inset_0_1px_0_0_oklch(0.78_0.14_195_/_0.06)] transition-colors hover:border-primary/25"
-          >
-            <div className="flex items-start justify-between gap-2 border-b border-border/60 pb-3 font-mono text-[10px] uppercase tracking-wider text-muted-foreground">
-              <span className="text-primary/90">{f.code}</span>
-              <f.icon className="h-4 w-4 shrink-0 text-primary/70" strokeWidth={1.75} />
-            </div>
-            <div className="mt-3 flex items-baseline justify-between gap-2">
-              <h3 className="text-sm font-medium leading-snug text-foreground">{f.title}</h3>
-              <span className="shrink-0 rounded bg-black/40 px-1.5 py-0.5 font-mono text-[10px] text-primary tabular-nums">
-                {f.value}
-              </span>
-            </div>
-            <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{f.description}</p>
-          </div>
+          <Card key={f.code} className="border-border bg-card">
+            <CardContent className="pt-6">
+              <div className="mb-3 flex items-center justify-between gap-2">
+                <span className="text-xs font-medium uppercase tracking-wide text-primary">{f.code}</span>
+                <f.icon className="h-5 w-5 text-primary" />
+              </div>
+              <div className="flex items-start justify-between gap-2">
+                <h3 className="text-base font-semibold text-foreground">{f.title}</h3>
+                <span className="shrink-0 rounded-md bg-secondary px-2 py-0.5 text-xs font-medium text-secondary-foreground">
+                  {f.value}
+                </span>
+              </div>
+              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{f.description}</p>
+            </CardContent>
+          </Card>
         ))}
       </div>
     </section>
