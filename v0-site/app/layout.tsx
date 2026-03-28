@@ -7,7 +7,8 @@ const geistMono = Geist_Mono({ variable: "--font-mono", subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: 'PriceRadarAPI — Competitor Pricing Intelligence for Self-Storage',
-  description: 'Stop leaving money on the table. PriceRadarAPI tracks competitor rates daily and alerts you when they change. Built for independent self-storage operators.',
+  description:
+    'National chains change web rates around the clock. PriceRadarAPI monitors competitor pricing 24/7 so independent self-storage operators stay ahead.',
   icons: {
     icon: [
       {
@@ -33,7 +34,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="dark">
       <body className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased`}>
         {children}
       </body>

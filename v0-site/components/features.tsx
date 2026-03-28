@@ -1,65 +1,88 @@
 import { Bell, Clock, BarChart3, Globe, Building2, Database } from "lucide-react"
-import { Card, CardContent } from "@/components/ui/card"
 
 const features = [
   {
     icon: Bell,
+    code: "ALRT-01",
     title: "Slack & Email Alerts",
+    value: "Same-day",
     description:
-      "Get notified the same day a competitor changes their rate. No more manual spreadsheet checks.",
+      "Push notifications when a peer changes their published web rate—no dashboard babysitting.",
   },
   {
     icon: Clock,
-    title: "Daily Price Tracking",
+    code: "SCRAPE",
+    title: "Daily price tracking",
+    value: "24/7 queue",
     description:
-      "We scrape your competitors' public web rates every day so you never miss a move.",
+      "Scheduled pulls from competitor facility pages so your intel is always current.",
   },
   {
     icon: BarChart3,
-    title: "Trend Charts",
+    code: "CHART",
+    title: "Trend charts",
+    value: "Multi-window",
     description:
-      "See how competitor rates shift over weeks and months. Spot seasonal patterns before they spot yours.",
+      "Visualize rate moves across weeks and months to time your own moves with confidence.",
   },
   {
     icon: Globe,
-    title: "Works With Any Website",
+    code: "ORIGIN",
+    title: "Source: real websites",
+    value: "Direct scrape",
     description:
-      "We pull rates directly from facility websites — SpareFoot, SiteLink, storEDGE, and more.",
+      "Rates come from operator sites and booking flows—not third-party estimates.",
   },
   {
     icon: Building2,
-    title: "Multi-Location Tracking",
+    code: "PORTFOLIO",
+    title: "Multi-location",
+    value: "Unified",
     description:
-      "Manage pricing intelligence for all your locations from a single dashboard.",
+      "One command surface for every store you run—compare peers at a glance.",
   },
   {
     icon: Database,
-    title: "Historical Data",
+    code: "STORE",
+    title: "Historical data",
+    value: "CSV + API",
     description:
-      "Every price point is stored. Export to CSV or access via API for your own analysis.",
+      "Every observation retained for audit, export, and your own models.",
   },
 ]
 
 export function Features() {
   return (
-    <section id="features" className="mx-auto max-w-5xl px-6 py-16">
-      <div className="mb-10 text-center">
-        <h2 className="text-2xl font-bold text-foreground md:text-3xl">
-          Everything you need to price with confidence
+    <section id="features" className="mx-auto max-w-5xl px-6 py-20">
+      <div className="mb-12 text-center">
+        <p className="font-mono text-[11px] font-medium uppercase tracking-[0.3em] text-primary/80">
+          Signal feed
+        </p>
+        <h2 className="mt-3 text-2xl font-semibold tracking-tight text-foreground md:text-3xl">
+          Built for operators, not slide decks
         </h2>
-        <p className="mt-2 text-muted-foreground">
-          Built specifically for self-storage operators, not generic SaaS analytics.
+        <p className="mx-auto mt-3 max-w-lg text-sm text-muted-foreground">
+          Every readout is designed like a desk terminal—dense, legible, and action-oriented.
         </p>
       </div>
-      <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {features.map((f) => (
-          <Card key={f.title} className="border-border bg-card">
-            <CardContent className="pt-6">
-              <f.icon className="mb-3 h-6 w-6 text-primary" />
-              <h3 className="text-base font-semibold text-foreground">{f.title}</h3>
-              <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">{f.description}</p>
-            </CardContent>
-          </Card>
+          <div
+            key={f.code}
+            className="group relative overflow-hidden rounded-lg border border-border bg-[oklch(0.08_0.02_250)] p-4 shadow-[inset_0_1px_0_0_oklch(0.78_0.14_195_/_0.06)] transition-colors hover:border-primary/25"
+          >
+            <div className="flex items-start justify-between gap-2 border-b border-border/60 pb-3 font-mono text-[10px] uppercase tracking-wider text-muted-foreground">
+              <span className="text-primary/90">{f.code}</span>
+              <f.icon className="h-4 w-4 shrink-0 text-primary/70" strokeWidth={1.75} />
+            </div>
+            <div className="mt-3 flex items-baseline justify-between gap-2">
+              <h3 className="text-sm font-medium leading-snug text-foreground">{f.title}</h3>
+              <span className="shrink-0 rounded bg-black/40 px-1.5 py-0.5 font-mono text-[10px] text-primary tabular-nums">
+                {f.value}
+              </span>
+            </div>
+            <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{f.description}</p>
+          </div>
         ))}
       </div>
     </section>
