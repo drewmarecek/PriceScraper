@@ -4,3 +4,11 @@ __pycache__/
 *.pyc
 *.pyo
 .DS_Store
+*.zip
+credentials.json
+token.json
+leads.csv
+texas_leads.csv
+notes.txt.rtf
+# v0-site is part of this repo; Next.js build artifacts stay ignored via v0-site/.gitignore
+cursor/
