@@ -56,7 +56,7 @@ export function Features() {
   return (
     <section id="features" className="mx-auto max-w-5xl px-6 py-16">
       <div className="mb-10 text-center">
-        <h2 className="text-2xl font-bold text-foreground md:text-3xl">Built for operators, not slide decks</h2>
+        <h2 className="text-2xl font-bold text-foreground md:text-3xl">Built for operators</h2>
         <p className="mx-auto mt-2 max-w-lg text-muted-foreground">
           Dense readouts and clear labels—built for how facility owners actually work.
         </p>

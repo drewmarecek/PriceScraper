@@ -23,8 +23,6 @@ const PUBLIC_STORAGE_CONROE_10X10_CC = [
   { date: "Mar 20", price: 66, flash: false },
   { date: "Mar 21", price: 54, flash: true },
   { date: "Mar 22", price: 66, flash: false },
-  { date: "Mar 23", price: 66, flash: false },
-  { date: "Mar 24", price: 66, flash: false },
 ] as const
 
 const DROP_PCT = Math.round(((66 - 54) / 66) * 100)
