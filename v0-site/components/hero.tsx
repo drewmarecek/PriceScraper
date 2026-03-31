@@ -6,8 +6,7 @@ export function Hero() {
   return (
     <section className="px-6 pt-32 pb-16 md:pt-40 md:pb-20">
       <div className="mx-auto max-w-3xl text-center">
-        <p className="text-sm text-muted-foreground">Independent self-storage</p>
-        <h1 className="mt-4 text-balance text-3xl font-bold tracking-tight text-foreground md:text-5xl lg:text-[3.15rem] lg:leading-[1.12]">
+        <h1 className="text-balance text-3xl font-bold tracking-tight text-foreground md:text-5xl lg:text-[3.15rem] lg:leading-[1.12]">
           Never get <span className="text-primary">blind-sided</span> by a weekend flash sale again.
         </h1>
         <p className="mx-auto mt-5 max-w-2xl text-pretty text-base leading-relaxed text-muted-foreground md:text-lg">
