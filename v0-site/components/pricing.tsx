@@ -6,7 +6,7 @@ import Link from "next/link"
 const tiers = [
   {
     name: "Starter",
-    price: "$79",
+    price: "$99",
     period: "/mo",
     description: "For single-facility owners who want to know what the competition is doing.",
     features: [
