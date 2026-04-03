@@ -21,7 +21,7 @@ Monorepo for **PriceRadarAPI**—competitor self-storage pricing intelligence: a
 
 ## Environment variables
 
-Create a **`.env`** in the repo root (see `.gitignore`—never commit secrets). Typical keys:
+Create a **`.env`** in the repo root (see `.gitignore`). Typical keys:
 
 | Variable | Used by |
 |----------|---------|
