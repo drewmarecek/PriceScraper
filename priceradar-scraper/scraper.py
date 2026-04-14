@@ -1,16 +1,9 @@
 """
-Headless self-storage price scraper using:
-- Playwright (async)
-- Supabase Python client for persistence
+Headless self-storage price scraper (Playwright + Supabase).
 
-How it works:
-1) Loads SUPABASE_URL and SUPABASE_SERVICE_KEY from .env
-2) Opens each competitor URL in headless Chromium
-3) Waits for network idle and a short additional settle delay
-4) Extracts unit-size + price pairs from rendered visual text
-5) Inserts/upserts rows into Supabase table: competitor_prices
-
-This file is intentionally modular so you can tune heuristics over time.
+Loads ``SUPABASE_URL`` / ``SUPABASE_SERVICE_KEY`` from ``.env``, visits each
+competitor URL in Chromium, extracts unit size and price from rendered text
+(and captured JSON), upserts into ``competitor_prices``.
 """
 
 from __future__ import annotations

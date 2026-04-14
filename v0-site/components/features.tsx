@@ -58,7 +58,7 @@ export function Features() {
       <div className="mb-10 text-center">
         <h2 className="text-2xl font-bold text-foreground md:text-3xl">Built for operators</h2>
         <p className="mx-auto mt-2 max-w-lg text-muted-foreground">
-          Dense readouts and clear labels—built for how facility owners actually work.
+          Clear labels and quick scans—how most owners review pricing intel.
         </p>
       </div>
       <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">

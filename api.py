@@ -8,8 +8,6 @@ Run:
 from __future__ import annotations
 
 import os
-from datetime import datetime
-
 from dotenv import load_dotenv
 from fastapi import Depends, FastAPI, HTTPException, Security
 from fastapi.security import APIKeyHeader
@@ -24,7 +22,7 @@ SUPABASE_KEY: str = os.environ["SUPABASE_KEY"]
 app = FastAPI(
     title="Price Tracker API",
     version="1.0.0",
-    description="Query the latest SaaS competitor prices by industry.",
+    description="Latest scraped competitor prices by industry (self-storage).",
 )
 
 # ---------------------------------------------------------------------------
@@ -108,7 +106,7 @@ class WebhookOut(BaseModel):
 )
 def get_prices_by_industry(
     industry: str,
-    caller: dict = Depends(verify_api_key),
+    _caller: dict = Depends(verify_api_key),
     supabase: Client = Depends(get_supabase),
 ) -> PriceResponse:
     """
@@ -169,7 +167,7 @@ def get_prices_by_industry(
     summary="List all webhooks",
 )
 def list_webhooks(
-    caller: dict = Depends(verify_api_key),
+    _caller: dict = Depends(verify_api_key),
     supabase: Client = Depends(get_supabase),
 ) -> list[WebhookOut]:
     """Return every registered webhook."""
@@ -189,7 +187,7 @@ def list_webhooks(
 )
 def create_webhook(
     body: WebhookCreate,
-    caller: dict = Depends(verify_api_key),
+    _caller: dict = Depends(verify_api_key),
     supabase: Client = Depends(get_supabase),
 ) -> WebhookOut:
     """Register a new webhook URL to receive price-change notifications."""
@@ -208,7 +206,7 @@ def create_webhook(
 )
 def delete_webhook(
     webhook_id: int,
-    caller: dict = Depends(verify_api_key),
+    _caller: dict = Depends(verify_api_key),
     supabase: Client = Depends(get_supabase),
 ) -> None:
     """Remove a webhook registration."""

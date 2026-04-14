@@ -10,23 +10,29 @@ import Link from "next/link"
 export default function ContactPage() {
   const [submitted, setSubmitted] = useState(false)
   const [sending, setSending] = useState(false)
+  const [submitError, setSubmitError] = useState<string | null>(null)
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
     setSending(true)
+    setSubmitError(null)
 
     const form = e.currentTarget
     const data = new FormData(form)
 
     try {
-      await fetch("https://formsubmit.co/ajax/drewmarecek@gmail.com", {
+      const res = await fetch("https://formsubmit.co/ajax/drewmarecek@gmail.com", {
         method: "POST",
         headers: { Accept: "application/json" },
         body: data,
       })
+      if (!res.ok) {
+        setSubmitError("Something went wrong. Please try again or email directly.")
+        return
+      }
       setSubmitted(true)
     } catch {
-      setSubmitted(true)
+      setSubmitError("Network error. Please check your connection and try again.")
     } finally {
       setSending(false)
     }
@@ -73,6 +79,11 @@ export default function ContactPage() {
               Tell me about your facility and the competitors you want to track.
               Early access is free — no credit card required.
             </p>
+            {submitError && (
+              <p className="mb-4 rounded-md border border-destructive/50 bg-destructive/10 px-3 py-2 text-sm text-destructive">
+                {submitError}
+              </p>
+            )}
             <form onSubmit={handleSubmit} className="space-y-5">
               <input type="hidden" name="_subject" value="PriceRadarAPI — New access request" />
               <input type="hidden" name="_captcha" value="false" />

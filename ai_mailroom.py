@@ -1,38 +1,18 @@
 """
-AI Cold Email Drafter — Human-in-the-Loop System.
+Draft cold emails with Gemini and save them as Gmail drafts (does not send).
 
-Reads leads from texas_leads.csv, uses Gemini to draft personalized
-cold emails, and saves them as Gmail drafts (does NOT send).
+Input: ``texas_leads.csv`` with columns ``Facility Name``, ``Email``.
 
-Prerequisites:
-    1. credentials.json from Google Cloud Console (see setup instructions below)
-    2. GEMINI_API_KEY in .env
-    3. pip install google-api-python-client google-auth-oauthlib google-genai
+Needs ``GEMINI_API_KEY`` in ``.env``, ``credentials.json`` (Gmail OAuth desktop
+client from Google Cloud Console), and packages: ``google-api-python-client``,
+``google-auth-oauthlib``, ``google-genai``.
 
-Run:
-    python3 ai_mailroom.py
+Gmail: enable Gmail API; OAuth consent with scope
+``https://www.googleapis.com/auth/gmail.compose``; create a Desktop OAuth client
+and save as ``credentials.json``. First run opens a browser; ``token.json`` is
+stored for later runs.
 
-Gmail OAuth Setup Instructions:
-    1. Go to https://console.cloud.google.com
-    2. Select your project (or create a new one)
-    3. Go to APIs & Services → Library
-    4. Search for "Gmail API" and click Enable
-    5. Go to APIs & Services → OAuth consent screen
-       - Choose "External" user type → Create
-       - Fill in App name (e.g. "PriceRadar Mailroom"), your email, etc.
-       - On Scopes page, click "Add or Remove Scopes"
-       - Add: https://www.googleapis.com/auth/gmail.compose
-       - Save and continue
-       - On Test Users page, add your own Gmail address
-       - Save and continue
-    6. Go to APIs & Services → Credentials
-       - Click "Create Credentials" → "OAuth client ID"
-       - Application type: "Desktop app"
-       - Name: "AI Mailroom"
-       - Click Create
-       - Click "Download JSON" → save as credentials.json in this directory
-    7. Run this script. A browser window opens to authorize.
-       After authorization, a token.json file is saved for future runs.
+Run: ``python3 ai_mailroom.py``
 """
 
 from __future__ import annotations
