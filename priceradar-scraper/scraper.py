@@ -619,20 +619,20 @@ async def _scrape_embed_page(
     embed_url: str,
     competitor_url: str,
     scraped_at: str,
-) -> Tuple[List[Dict[str, Any]], int, int, int]:
+) -> Tuple[List[Dict[str, Any]], int]:
     """
     Open a dedicated tab to a sandboxed widget URL; same DOM + JSON pipeline as main page.
+    Returns (rows, json_capture_count).
     """
     captured: List[str] = []
     handler = _make_json_capture_handler(captured)
     child = await context.new_page()
     child.on("response", handler)
-    main_lines = frame_lines = 0
     try:
         await child.goto(embed_url, wait_until="networkidle", timeout=PAGE_TIMEOUT_MS)
         await child.wait_for_timeout(POST_LOAD_DELAY_MS)
         await _scroll_for_lazy_load(child)
-        all_lines, main_lines, frame_lines = await _gather_dom_text_lines(child)
+        all_lines, _, _ = await _gather_dom_text_lines(child)
         rows = _rows_from_dom_and_json(
             competitor_url,
             scraped_at,
@@ -640,7 +640,7 @@ async def _scrape_embed_page(
             captured,
             json_diag_prefix=f"embed<{embed_url[:120]}>",
         )
-        return rows, main_lines, frame_lines, len(captured)
+        return rows, len(captured)
     finally:
         try:
             child.remove_listener("response", handler)
@@ -707,7 +707,7 @@ async def scrape_single_url(page, url: str) -> List[Dict[str, Any]]:
         embed_json_total = 0
         for embed_url in embed_urls[:MAX_EMBED_IFRAME_DEEP_NAV]:
             try:
-                erows, _eml, _efr, ejc = await _scrape_embed_page(
+                erows, ejc = await _scrape_embed_page(
                     page.context, embed_url, url, scraped_at
                 )
                 embed_json_total += ejc
@@ -822,4 +822,3 @@ async def run() -> None:
 
 if __name__ == "__main__":
     asyncio.run(run())
-

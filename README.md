@@ -10,7 +10,6 @@ Monorepo for **PriceRadarAPI**—competitor self-storage pricing intelligence: a
 | **`api.py`** | FastAPI service: authenticated endpoints to query latest prices from Supabase. Run with `uvicorn`. |
 | **`priceradar-scraper/scraper.py`** | Headless Chromium scraper: visual text + shadow DOM, JSON response capture, optional deep navigation to embed URLs. Writes to Supabase (`competitor_prices` by default). |
 | **`scraper.py`** (repo root) | Legacy/alternate scraper used by `render.yaml` cron; keep in sync with deployment expectations. |
-| **`ai_mailroom.py`**, **`lead_gen.py`**, **`houston_leads.py`** | Lead generation and outreach helpers (separate workflows). |
 | **`seed_webhooks.py`** | Webhook seeding helpers. |
 | **`render.yaml`** | Render.com blueprint: API web service + scheduled scraper job. |
 
