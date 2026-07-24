@@ -10,3 +10,5 @@ token.json
 notes.txt.rtf
 # v0-site is part of this repo; Next.js build artifacts stay ignored via v0-site/.gitignore
 cursor/
+.vercel
+.env*

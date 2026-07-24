@@ -1,28 +1,34 @@
 import type { Metadata } from "next";
+import { Inter } from "next/font/google";
 import Script from "next/script";
 import BookingModalProvider from "./components/BookingModalProvider";
 import "./globals.css";
 
+const sans = Inter({
+  subsets: ["latin"],
+  variable: "--font-sans",
+  display: "swap",
+});
+
 export const metadata: Metadata = {
-  title: "PriceRadarAPI | AI Receptionists That Never Miss a Call",
+  title: "PriceRadarAPI | AI Receptionist That Answers Every Call, 24/7",
   description:
-    "PriceRadarAPI deploys AI receptionists that answer every call, book appointments, and capture leads 24/7 — so you never lose another customer to a missed call.",
+    "PriceRadarAPI answers your business calls around the clock — greets callers, handles questions, books appointments, and routes conversations with context.",
 };
 
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en">
+    <html lang="en" className={sans.variable}>
       <head>
-        {/* Warm up the connection to the GHL booking server before any CTA click */}
         <link
           rel="preconnect"
           href="https://api.leadconnectorhq.com"
           crossOrigin="anonymous"
         />
       </head>
-      <body>
+      <body className={sans.className}>
         <BookingModalProvider>{children}</BookingModalProvider>
         <Script id="microsoft-clarity" strategy="afterInteractive">
           {`(function(c,l,a,r,i,t,y){

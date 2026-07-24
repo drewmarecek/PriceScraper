@@ -1,21 +1,23 @@
 @import "tailwindcss";
 
 :root {
-  /* Premium, high-conversion palette:
-     indigo/blue = brand & trust, green = the single action color. */
   --brand-blue: #2563eb;
   --brand-blue-dark: #1d4ed8;
-  --brand-indigo: #4f46e5;
-  --brand-indigo-dark: #4338ca;
+  --brand-blue-light: #dbeafe;
+  --brand-cyan: #06b6d4;
+  --brand-navy: #0f172a;
+  --brand-navy-card: #1e293b;
   --brand-green: #16a34a;
   --brand-green-dark: #15803d;
 
   --surface: #ffffff;
   --page: #ffffff;
-  --tint: #f6f8fc; /* clean cool tint for alternating sections */
-  --ink: #0b1220;
-  --ink-soft: #4b5563;
-  --line: #e6e8ec;
+  --tint: #f8fafc;
+  --ink: #0f172a;
+  --ink-soft: #475569;
+  --ink-muted: #64748b;
+  --line: #e2e8f0;
+  --line-strong: #cbd5e1;
 }
 
 html {
@@ -25,80 +27,170 @@ html {
 body {
   background: var(--page);
   color: var(--ink);
-  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial,
-    sans-serif;
+  font-family: var(--font-sans), system-ui, sans-serif;
+  font-weight: 400;
+  line-height: 1.7;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+}
+
+.font-display {
+  font-family: var(--font-sans), system-ui, sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
 }
 
 @theme inline {
   --color-brand-blue: var(--brand-blue);
   --color-brand-blue-dark: var(--brand-blue-dark);
-  --color-brand-indigo: var(--brand-indigo);
-  --color-brand-indigo-dark: var(--brand-indigo-dark);
+  --color-brand-blue-light: var(--brand-blue-light);
+  --color-brand-cyan: var(--brand-cyan);
+  --color-brand-navy: var(--brand-navy);
+  --color-brand-navy-card: var(--brand-navy-card);
   --color-brand-green: var(--brand-green);
   --color-brand-green-dark: var(--brand-green-dark);
   --color-ink: var(--ink);
   --color-ink-soft: var(--ink-soft);
+  --color-ink-muted: var(--ink-muted);
   --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
   --color-tint: var(--tint);
+  --color-page: var(--page);
+  --color-surface: var(--surface);
 }
 
-/* Gradient accent for headline emphasis (royal blue -> indigo) */
-.text-gradient {
-  background-image: linear-gradient(
-    100deg,
-    var(--brand-blue) 0%,
-    var(--brand-indigo) 100%
-  );
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-
-/* Premium hero backdrop: soft indigo/blue glow fading into white,
-   with a whisper-faint dot grid for depth. */
 .hero-bg {
   background-color: #ffffff;
-  background-image:
-    radial-gradient(
-      72% 55% at 50% -12%,
-      rgba(79, 70, 229, 0.14),
-      transparent 70%
-    ),
-    radial-gradient(
-      42% 40% at 92% 0%,
-      rgba(37, 99, 235, 0.1),
-      transparent 70%
-    ),
-    radial-gradient(rgba(79, 70, 229, 0.05) 1px, transparent 1px);
-  background-size:
-    auto,
-    auto,
-    24px 24px;
+  background-image: radial-gradient(
+    circle at top right,
+    rgba(37, 99, 235, 0.1),
+    transparent 60%
+  );
 }
 
-/* Reusable premium card */
-.card {
+.feature-panel {
   background: var(--surface);
   border: 1px solid var(--line);
-  border-radius: 1rem;
-  box-shadow:
-    0 1px 2px rgba(11, 18, 32, 0.04),
-    0 10px 30px -14px rgba(11, 18, 32, 0.14);
+  border-radius: 20px;
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.04);
+  transition:
+    transform 200ms ease,
+    box-shadow 200ms ease;
 }
 
-/* Gentle attention pulse for the primary phone number ring */
-@keyframes soft-ring {
-  0%,
-  100% {
-    box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.32);
-  }
-  50% {
-    box-shadow: 0 0 0 10px rgba(37, 99, 235, 0);
+.feature-panel:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.08);
+}
+
+.section-pad {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+
+@media (min-width: 640px) {
+  .section-pad {
+    padding-top: 7.5rem;
+    padding-bottom: 7.5rem;
   }
 }
 
-.soft-ring {
-  animation: soft-ring 2.4s ease-in-out infinite;
+.cta-primary {
+  background: var(--brand-blue);
+  color: #ffffff;
+  border-radius: 14px;
+  font-weight: 600;
+  box-shadow: 0 12px 35px rgba(37, 99, 235, 0.25);
+  transition:
+    background 200ms ease,
+    transform 200ms ease,
+    box-shadow 200ms ease;
+}
+
+.cta-primary:hover {
+  background: var(--brand-blue-dark);
+}
+
+.cta-secondary {
+  background: #ffffff;
+  color: var(--ink);
+  border: 1px solid var(--line-strong);
+  border-radius: 14px;
+  font-weight: 600;
+  transition:
+    background 200ms ease,
+    border-color 200ms ease,
+    transform 200ms ease;
+}
+
+.cta-secondary:hover {
+  background: var(--tint);
+}
+
+.cta-secondary-on-dark {
+  background: transparent;
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 14px;
+  font-weight: 600;
+  transition:
+    background 200ms ease,
+    border-color 200ms ease,
+    transform 200ms ease;
+}
+
+.cta-secondary-on-dark:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.55);
+}
+
+.integration-chip {
+  color: var(--ink-muted);
+  filter: grayscale(1);
+  opacity: 0.75;
+  transition:
+    filter 200ms ease,
+    opacity 200ms ease,
+    color 200ms ease,
+    border-color 200ms ease;
+}
+
+.integration-chip:hover {
+  filter: grayscale(0);
+  opacity: 1;
+  color: var(--ink);
+  border-color: var(--line-strong);
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-up {
+  animation: fade-up 300ms ease both;
+}
+
+@keyframes integrations-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.integrations-track {
+  animation: integrations-scroll 40s linear infinite;
+}
+
+.integrations-track:hover {
+  animation-play-state: paused;
 }

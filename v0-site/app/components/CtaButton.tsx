@@ -5,26 +5,25 @@ import { useBookingModal } from "./BookingModalProvider";
 type CtaButtonProps = {
   children: React.ReactNode;
   className?: string;
-  variant?: "green" | "blue";
-  /** Analytics attribution label for this button's location. */
+  variant?: "primary" | "secondary" | "secondaryOnDark" | "ghost";
   source?: string;
+  showArrow?: boolean;
 };
 
 const VARIANTS: Record<NonNullable<CtaButtonProps["variant"]>, string> = {
-  green:
-    "bg-brand-green hover:bg-brand-green-dark shadow-green-600/25 focus-visible:ring-green-300",
-  blue: "bg-brand-blue hover:bg-brand-blue-dark shadow-blue-600/25 focus-visible:ring-blue-300",
+  primary: "cta-primary focus-visible:ring-blue-200",
+  secondary: "cta-secondary focus-visible:ring-slate-200",
+  secondaryOnDark: "cta-secondary-on-dark focus-visible:ring-white/30",
+  ghost:
+    "bg-transparent text-ink-soft hover:text-ink hover:bg-tint focus-visible:ring-slate-200 font-semibold rounded-[14px]",
 };
 
-/**
- * Primary conversion element. Opens the booking modal instantly — no anchor
- * scrolling (which was causing dead clicks inside mobile webviews).
- */
 export default function CtaButton({
   children,
   className = "",
-  variant = "green",
+  variant = "primary",
   source = "cta",
+  showArrow = variant === "primary",
 }: CtaButtonProps) {
   const { openBookingModal } = useBookingModal();
 
@@ -32,22 +31,24 @@ export default function CtaButton({
     <button
       type="button"
       onClick={() => openBookingModal(source)}
-      className={`group inline-flex items-center justify-center gap-2 rounded-xl px-7 py-4 text-base font-semibold text-white shadow-lg transition-all duration-200 hover:-translate-y-0.5 hover:shadow-xl focus:outline-none focus-visible:ring-4 active:translate-y-0 ${VARIANTS[variant]} ${className}`}
+      className={`group inline-flex items-center justify-center gap-2 px-6 py-3 text-sm transition-all duration-200 hover:-translate-y-0.5 focus:outline-none focus-visible:ring-4 active:translate-y-0 active:scale-[0.98] ${VARIANTS[variant]} ${className}`}
     >
       {children}
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5"
-        aria-hidden
-      >
-        <path d="M5 12h14M13 6l6 6-6 6" />
-      </svg>
+      {showArrow && (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5"
+          aria-hidden
+        >
+          <path d="M5 12h14M13 6l6 6-6 6" />
+        </svg>
+      )}
     </button>
   );
 }

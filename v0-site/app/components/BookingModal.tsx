@@ -159,9 +159,6 @@ export default function BookingModal() {
             <h2 className="mt-1 text-xl font-extrabold tracking-tight text-ink sm:text-2xl">
               Tell us where to send your demo details
             </h2>
-            <p className="mt-1 text-sm text-ink-soft">
-              Takes 15 seconds. Then choose your slot on the next step.
-            </p>
           </div>
 
           <form onSubmit={handleSubmit} noValidate className="mt-5">
@@ -261,7 +258,7 @@ export default function BookingModal() {
 
             <button
               type="submit"
-              className="group mt-6 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-brand-green px-8 py-4 text-lg font-semibold text-white shadow-lg shadow-green-600/25 transition-all duration-200 hover:-translate-y-0.5 hover:bg-brand-green-dark hover:shadow-xl focus:outline-none focus-visible:ring-4 focus-visible:ring-green-300 active:translate-y-0"
+              className="cta-primary group mt-6 inline-flex w-full items-center justify-center gap-2 px-8 py-4 text-lg transition-all duration-200 hover:-translate-y-0.5 focus:outline-none focus-visible:ring-4 focus-visible:ring-blue-200 active:translate-y-0"
             >
               See Available Times
               <svg
