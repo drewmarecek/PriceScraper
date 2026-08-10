@@ -1,4 +1,4 @@
-# PriceRadar / AA Price Tracker
+# PriceRadarAPI
 
 Monorepo for **PriceRadarAPI**—competitor self-storage pricing intelligence: a marketing site, a read API backed by Supabase, and Playwright-based scrapers that collect unit sizes and rates from competitor sites.
 
